@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Untuk Dek Dekku Semua</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(
+                135deg,
+                #e9ebec,
+                #f95bb8,
+                #d3e2f0
+            );
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Kartu Pesan */
+        .pesan {
+            width: 80%;
+            max-width: 600px;
+            max-height: 75vh;
+            margin: 20px;
+            padding: 40px 35px;
+            background: rgba(255, 255, 255, 0.65);
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(8px);
+            animation: muncul 2s ease-in-out;
+            position: relative;
+            z-index: 2;
+            overflow-y: auto;
+        }
+
+        .subjudul {
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 32px;
+            line-height: 1.3;
+            color: #fe63d0;
+            margin: 0 0 25px 0;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.9;
+            color: #555;
+            text-align: left;
+        }
+
+        .penutup {
+            margin-top: 30px;
+            text-align: right;
+            font-size: 16px;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* FOTO */
+        .foto {
+            position: fixed;
+            width: 120px;
+            height: 150px;
+            padding: 8px;
+            background: white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            z-index: 1;
+            opacity: 0;
+            animation: fotoMuncul 36s infinite;
+        }
+
+        .foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .foto1 {
+            top: 7%;
+            left: 8%;
+            transform: rotate(-7deg);
+            animation-delay: 0s;
+        }
+
+        .foto2 {
+            top: 8%;
+            right: 8%;
+            transform: rotate(6deg);
+            animation-delay: 6s;
+        }
+
+        .foto3 {
+            top: 38%;
+            left: 3%;
+            transform: rotate(5deg);
+            animation-delay: 12s;
+        }
+
+        .foto4 {
+            top: 40%;
+            right: 3%;
+            transform: rotate(-6deg);
+            animation-delay: 18s;
+        }
+
+        .foto5 {
+            bottom: 6%;
+            left: 10%;
+            transform: rotate(6deg);
+            animation-delay: 24s;
+        }
+
+        .foto6 {
+            bottom: 6%;
+            right: 10%;
+            transform: rotate(-7deg);
+            animation-delay: 30s;
+        }
+
+        @keyframes fotoMuncul {
+            0% {
+                opacity: 0;
+            }
+
+            5% {
+                opacity: 1;
+            }
+
+            14% {
+                opacity: 1;
+            }
+
+            19% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Tombol Musik */
+        .music {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+
+        .music button {
+            border: none;
+            background: rgba(255, 255, 255, 0.7);
+            color: #777;
+            padding: 10px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(8px);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .music button:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        /* Sparkle */
+        .sparkle {
+            position: fixed;
+            font-size: 16px;
+            opacity: 0.4;
+            animation: kelapkelip 2.5s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .s1  { top: 10%; left: 15%; }
+        .s2  { top: 18%; left: 45%; animation-delay: 0.5s; }
+        .s3  { top: 12%; left: 80%; animation-delay: 1s; }
+        .s4  { top: 35%; left: 8%; animation-delay: 1.5s; }
+        .s5  { top: 40%; left: 25%; animation-delay: 0.8s; }
+        .s6  { top: 30%; left: 90%; animation-delay: 1.8s; }
+        .s7  { top: 60%; left: 12%; animation-delay: 0.3s; }
+        .s8  { top: 65%; left: 35%; animation-delay: 1.2s; }
+        .s9  { top: 75%; left: 60%; animation-delay: 0.6s; }
+        .s10 { top: 60%; left: 85%; animation-delay: 1.6s; }
+        .s11 { top: 85%; left: 20%; animation-delay: 1s; }
+        .s12 { top: 88%; left: 75%; animation-delay: 0.4s; }
+
+        @keyframes kelapkelip {
+            0%, 100% {
+                opacity: 0.15;
+                transform: scale(0.7);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.3);
+            }
+        }
+
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Tampilan HP */
+        @media (max-width: 600px) {
+
+            .pesan {
+                width: 72%;
+                padding: 30px 25px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            p {
+                font-size: 16px;
+                line-height: 1.8;
+            }
+
+            .subjudul {
+                font-size: 11px;
+            }
+
+            .foto {
+                width: 70px;
+                height: 90px;
+                padding: 5px;
+            }
+
+            .foto1 {
+                top: 5%;
+                left: 3%;
+            }
+
+            .foto2 {
+                top: 5%;
+                right: 3%;
+            }
+
+            .foto3 {
+                top: 42%;
+                left: 1%;
+            }
+
+            .foto4 {
+                top: 42%;
+                right: 1%;
+            }
+
+            .foto5 {
+                bottom: 7%;
+                left: 5%;
+            }
+
+            .foto6 {
+                bottom: 7%;
+                right: 5%;
+            }
+
+            .music {
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Musik -->
+    <audio id="lagu" loop>
+        <source src="music/lagu.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Tombol Musik -->
+    <div class="music">
+        <button id="musicButton" onclick="putarMusik()">♫ Music</button>
+    </div>
+
+    <!-- Foto -->
+    <div class="foto foto1">
+        <img src="foto/foto1.jpeg">
+    </div>
+
+    <div class="foto foto2">
+        <img src="foto/foto2.jpeg">
+    </div>
+
+    <div class="foto foto3">
+        <img src="foto/foto3.jpeg">
+    </div>
+
+    <div class="foto foto4">
+        <img src="foto/foto4.jpeg">
+    </div>
+
+    <div class="foto foto5">
+        <img src="foto/foto5.jpeg">
+    </div>
+
+    <div class="foto foto6">
+        <img src="foto/foto6.jpeg">
+    </div>
+
+    <!-- Sparkle -->
+    <div class="sparkle s1">✦</div>
+    <div class="sparkle s2">✦</div>
+    <div class="sparkle s3">✦</div>
+    <div class="sparkle s4">✦</div>
+    <div class="sparkle s5">✦</div>
+    <div class="sparkle s6">✦</div>
+    <div class="sparkle s7">✦</div>
+    <div class="sparkle s8">✦</div>
+    <div class="sparkle s9">✦</div>
+    <div class="sparkle s10">✦</div>
+    <div class="sparkle s11">✦</div>
+    <div class="sparkle s12">✦</div>
+
+    <!-- Pesan -->
+    <div class="pesan">
+
+        <div class="subjudul">
+            Bukan Pesan Perpisahan
+        </div>
+
+        <h1>untuk Elsya Amalina Hakim</h1>
+
+        <p>
+            Halo de.
+            <br><br>
+
+            Beneran dah sembuh kan? 
+            Klo ga ya besok lagi unboxingnya
+            <br><br>
+
+            Makasih ya de udah mau berkawan sama kitorang.
+            Makasi jg rumahnya kmren dah jdi tempat main,
+            next time wifinya taro bawah aja ya.
+            Ingat, jangan mau jadi selingkuhan,
+            cari cowo di Semarang aja.
+            Oh iya, jangan bloon2 banget ya dut 
+            soalnya aku ngeiat kau kek orang yg "iya iya" aja,
+            takutnya nnti kau ketemu cwo, malah dimanfaatin.
+            Untungnya sih kau ktemu orang2 baik kek kitorang ni lah
+            <br><br>
+
+            Semoga tetap bekawan ya kita.
+            Klo kangen sma kitorang kabarin ajah
+            Jangan cari kami di orang baru yawww
+            <br><br>
+
+            P.S.: bingung mau nulis apa lg co, 
+            soalnya td dah buat punya dipa dluan
+        </p>
+
+        <div class="penutup">
+            — Dari Cowo JARANG dan CARE 
+        </div>
+
+    </div>
+
+    <script>
+        function putarMusik() {
+            const lagu = document.getElementById("lagu");
+            const tombol = document.getElementById("musicButton");
+
+            if (lagu.paused) {
+                lagu.play();
+                tombol.innerHTML = "♫ Playing...";
+            } else {
+                lagu.pause();
+                tombol.innerHTML = "♫ Music";
+            }
+        }
+    </script>
+
+</body>
+</html>
